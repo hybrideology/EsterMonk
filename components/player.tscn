@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckudr8chj1kgo"]
+
+[ext_resource type="Script" uid="uid://80kl10p8d3vr" path="res://components/player.gd" id="1_4flbx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mf4mk"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_4flbx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_mf4mk")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(-6.1566415, 13.000008)
+scale = Vector2(0.2811244, 0.43103448)
+polygon = PackedVector2Array(-3, -60.320007, -3, 0, 46.80005, 0, 46.80005, -60.320007)
+uv = PackedVector2Array(-3, -60, -3, -2, 62, -2, 60, -55)

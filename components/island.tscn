@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://ea0vja7cwr7h"]
+
+[node name="Island" type="StaticBody2D"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-0.3322144, -0.40127563)
+scale = Vector2(1.0006926, 0.9886049)
+polygon = PackedVector2Array(213, 75, 299, -95, 52, -57, -303.5633, -74.842926, -246.5633, 61.157074, -54, 86)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(-301.99997, -45)
+scale = Vector2(1.2096436, 1.3585955)
+color = Color(0.13148987, 0.7524929, 0.99999994, 1)
+polygon = PackedVector2Array(496.01385, -36.06665, 292.6482, -8.096588, -1.6534119, -22.081635, 48.145935, 78.277985, 206.67242, 94.214935, 424.91858, 87.590454)
+uv = PackedVector2Array(632.3356, 51.5269, 324.14594, -34.722015, -64.854065, 29.277985, 192.14594, 88.277985, 432.14594, 98.277985)
