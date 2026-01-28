@@ -15,3 +15,10 @@ position = Vector2(-6.1566415, 13.000008)
 scale = Vector2(0.2811244, 0.43103448)
 polygon = PackedVector2Array(-3, -60.320007, -3, 0, 46.80005, 0, 46.80005, -60.320007)
 uv = PackedVector2Array(-3, -60, -3, -2, 62, -2, 60, -55)
+
+[node name="Selector" type="Area2D" parent="."]
+position = Vector2(93, 1)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Selector"]
+position = Vector2(0, 10)
+polygon = PackedVector2Array(21, -5, 14, 18, -18, 17, -18, -5, 1, -23)

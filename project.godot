@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="EsterMonk"
-run/main_scene="uid://b6vf1aji6dy38"
+run/main_scene="uid://cnc7qya2d1jbh"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[global_group]
+
+islands=""
 
 [physics]
 
