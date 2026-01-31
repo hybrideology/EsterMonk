@@ -1,12 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://ea0vja7cwr7h"]
+[gd_scene format=3 uid="uid://ea0vja7cwr7h"]
 
 [ext_resource type="Script" uid="uid://svs0wywhoxb1" path="res://components/island.gd" id="1_vej1h"]
 
-[node name="Island" type="StaticBody2D" groups=["islands"]]
-script = ExtResource("1_vej1h")
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vej1h"]
+bounce = 0.4
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-position = Vector2(2, 0)
+[node name="Island" type="RigidBody2D" unique_id=1841122985 node_paths=PackedStringArray("_poly_node") groups=["islands"]]
+physics_material_override = SubResource("PhysicsMaterial_vej1h")
+script = ExtResource("1_vej1h")
+_poly_node = NodePath("Polygon2D")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=263485042]
+position = Vector2(-433, 334)
 color = Color(0.6532129, 0.7024719, 0.7372427, 1)
-polygon = PackedVector2Array(308.94122, -84.97347, -28.738365, -49.154854, -352.2124, -109.44617, -260.47144, 62.760117, -29.836357, 92.61829, 198.50179, 84.58542)
-uv = PackedVector2Array(496.01385, -36.06665, 292.6482, -8.096588, -54.65341, -39.081635, 48.145935, 78.277985, 206.67242, 94.214935, 424.91858, 87.590454)
+polygon = PackedVector2Array(136.324, -149.49236, 714.1634, -151.80376, 704.9182, -449.969, 593.973, -452.28033, 607.84094, -235.01266, 272.69415, -237.32404, 265.75995, -461.52582, 136.324, -454.59174)
+uv = PackedVector2Array(-584, 280.00012, 1415.999, 272, 1384, -759.99994, 1000, -767.99994, 1047.999, -16, -112, -24, -136.00049, -800, -584, -775.99994)

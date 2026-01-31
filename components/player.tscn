@@ -1,24 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckudr8chj1kgo"]
+[gd_scene format=3 uid="uid://ckudr8chj1kgo"]
 
 [ext_resource type="Script" uid="uid://80kl10p8d3vr" path="res://components/player.gd" id="1_4flbx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mf4mk"]
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=58296796]
 script = ExtResource("1_4flbx")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1500150339]
 shape = SubResource("CapsuleShape2D_mf4mk")
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1273645799]
 position = Vector2(-6.1566415, 13.000008)
 scale = Vector2(0.2811244, 0.43103448)
 polygon = PackedVector2Array(-3, -60.320007, -3, 0, 46.80005, 0, 46.80005, -60.320007)
 uv = PackedVector2Array(-3, -60, -3, -2, 62, -2, 60, -55)
 
-[node name="Selector" type="Area2D" parent="."]
-position = Vector2(93, 1)
+[node name="Selector" type="Area2D" parent="." unique_id=151343651]
+position = Vector2(44, 1)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Selector"]
-position = Vector2(0, 10)
-polygon = PackedVector2Array(21, -5, 14, 18, -18, 17, -18, -5, 1, -23)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Selector" unique_id=1889314979]
+polygon = PackedVector2Array(14, -8, 11, 9, -4, 15, -14, 8, -15, -7, 0, -15)

@@ -1,17 +1,44 @@
-class_name Island extends StaticBody2D
+class_name Island extends RigidBody2D
 
-var _polyNode: Polygon2D # always 
+const MINAREA: int = 20
+
+@export var _poly_node: Polygon2D
 var _collider: CollisionPolygon2D
+
+func _calculate_area(points: PackedVector2Array) -> float:
+	var xsum: float = 0
+	var ysum: float = 0
+	for i in points.size():
+		var cur: Vector2 = points[i]
+		var next: Vector2 = points[(i+1)%points.size()]
+		xsum += cur.x * next.y
+		ysum += cur.y * next.x
+	return abs(ysum - xsum)/2
+
+func _has_holes(polygons: Array[PackedVector2Array]) -> bool:
+	for p in polygons:
+		if (Geometry2D.is_polygon_clockwise(p)):
+			return true
+	return false
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	gravity_scale = 0
+	add_to_group("islands")
+	if _poly_node != null:
+		var polyNode_global_transform: Transform2D = _poly_node.global_transform
+		_poly_node.transform = Transform2D()
+		set_polygon(polyNode_global_transform * _poly_node.polygon)
 
 func set_polygon(points: PackedVector2Array) -> void:
 		if points.is_empty():
-			self.queue_free()
+			queue_free()
 			return
 		
 		# 0. Init child nodes
-		if _polyNode == null:
-			_polyNode = Polygon2D.new()
-			add_child(_polyNode)
+		if _poly_node == null:
+			_poly_node = Polygon2D.new()
+			add_child(_poly_node)
 		if _collider == null:
 			_collider = CollisionPolygon2D.new()
 			add_child(_collider)
@@ -27,27 +54,25 @@ func set_polygon(points: PackedVector2Array) -> void:
 			points[i] -= center
 		
 		# 3. Set everything
-		_polyNode.polygon = points
+		var area: float = _calculate_area(points)
+		if area < MINAREA:
+			queue_free()
+			return
+		
+		mass = _calculate_area(points)
+		_poly_node.polygon = points
 		_collider.polygon = points
 		global_position = center
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	if _polyNode == null:
-		_polyNode = $Polygon2D
-		var polyNode_transform = _polyNode.global_transform
-		_polyNode.transform = Transform2D()
-		set_polygon(polyNode_transform * _polyNode.polygon)
+func rip(selector_poly: PackedVector2Array) -> Array[PackedVector2Array]:
+	var absolute_poly: PackedVector2Array = global_transform * _poly_node.polygon
+	var self_pieces: Array[PackedVector2Array] = Geometry2D.clip_polygons(absolute_poly, selector_poly)
+	var other_pieces: Array[PackedVector2Array]  = Geometry2D.intersect_polygons(absolute_poly, selector_poly)
 	
-
-func rip(selectorPoly: PackedVector2Array) -> PackedVector2Array:
-	var absolutePoly = global_transform * _polyNode.polygon
-	var self_clip: = Geometry2D.clip_polygons(absolutePoly, selectorPoly)
-	var other_clip: = Geometry2D.intersect_polygons(absolutePoly, selectorPoly)
-	if self_clip.size() == 1:
-		set_polygon(self_clip[0])
-	if other_clip.size() == 1:
-		return other_clip[0]
-	return []
+	if self_pieces.size() > 0 && !_has_holes(self_pieces):
+		set_polygon(self_pieces[0])
+		self_pieces.remove_at(0)
+		other_pieces.append_array(self_pieces)
+		return other_pieces
 		
+	return []
