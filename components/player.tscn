@@ -4,6 +4,11 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mf4mk"]
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_0g4kb"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=58296796]
 script = ExtResource("1_4flbx")
 
@@ -21,3 +26,10 @@ position = Vector2(44, 1)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Selector" unique_id=1889314979]
 polygon = PackedVector2Array(14, -8, 11, 9, -4, 15, -14, 8, -15, -7, 0, -15)
+
+[node name="JumpTimer" type="Timer" parent="." unique_id=490019403]
+
+[node name="JumpBuffer" type="Timer" parent="." unique_id=279100882]
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=712588543]
+replication_config = SubResource("SceneReplicationConfig_0g4kb")

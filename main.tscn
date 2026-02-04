@@ -1,19 +1,18 @@
 [gd_scene format=3 uid="uid://cnc7qya2d1jbh"]
 
-[ext_resource type="PackedScene" uid="uid://b6vf1aji6dy38" path="res://components/test.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://hid351juuj5k" path="res://ui/multiplayer_example.tscn" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://dvqjitwrbj27g" path="res://centered.tscn" id="1_ig7tw"]
 
-[node name="Control" type="Control" unique_id=2135353923]
+[node name="Main" type="Control" unique_id=2135353923]
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.0
-offset_top = -4.0
-offset_right = -5.0
-offset_bottom = -4.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Test" parent="." unique_id=831626061 instance=ExtResource("1_ig7tw")]
+[node name="MultiplayerExample" parent="." unique_id=1029861000 instance=ExtResource("1_0xm2m")]
+layout_mode = 1
+
+[node name="Centered" parent="." unique_id=744330498 instance=ExtResource("1_ig7tw")]
+layout_mode = 1

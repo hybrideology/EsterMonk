@@ -5,6 +5,17 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vej1h"]
 bounce = 0.4
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vej1h"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("Polygon2D:polygon")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:rotation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
 [node name="Island" type="RigidBody2D" unique_id=1841122985 node_paths=PackedStringArray("_poly_node") groups=["islands"]]
 physics_material_override = SubResource("PhysicsMaterial_vej1h")
 script = ExtResource("1_vej1h")
@@ -13,5 +24,8 @@ _poly_node = NodePath("Polygon2D")
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=263485042]
 position = Vector2(-433, 334)
 color = Color(0.6532129, 0.7024719, 0.7372427, 1)
-polygon = PackedVector2Array(136.324, -149.49236, 714.1634, -151.80376, 704.9182, -449.969, 593.973, -452.28033, 607.84094, -235.01266, 272.69415, -237.32404, 265.75995, -461.52582, 136.324, -454.59174)
+polygon = PackedVector2Array(136.324, -149.49236, 714.1634, -151.80376, 704.9182, -449.969, 600.0001, -384.00003, 607.84094, -235.01266, 272.69415, -237.32404, 264, -408.00003, 136.324, -454.59174)
 uv = PackedVector2Array(-584, 280.00012, 1415.999, 272, 1384, -759.99994, 1000, -767.99994, 1047.999, -16, -112, -24, -136.00049, -800, -584, -775.99994)
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=284880000]
+replication_config = SubResource("SceneReplicationConfig_vej1h")

@@ -2,10 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://ea0vja7cwr7h" path="res://components/island.tscn" id="1_8uh7m"]
 [ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://components/player.tscn" id="1_37kl0"]
+[ext_resource type="Script" uid="uid://curx5sydccjv8" path="res://components/multiplayer_spawner.gd" id="2_0tx24"]
 
 [node name="Test" type="Node2D" unique_id=1134087016]
 
 [node name="Island" parent="." unique_id=1452875668 instance=ExtResource("1_8uh7m")]
 
-[node name="Player" parent="." unique_id=414122285 instance=ExtResource("1_37kl0")]
-position = Vector2(-8, -200)
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1132038429]
+_spawnable_scenes = PackedStringArray("uid://ckudr8chj1kgo")
+spawn_path = NodePath("..")
+script = ExtResource("2_0tx24")
+network_player = ExtResource("1_37kl0")
